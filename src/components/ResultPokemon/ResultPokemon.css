@@ -31,8 +31,9 @@
 
 .img-pokemon {
   position: absolute;
-  top: 10%;
-  left: 20%;
-  height: 120px;
-  width: 120px;
+  height: 150px;
+  width: 150px;
+  top: 50%;
+  left: 50%;
+  margin: -75px 0 0 -75px;
 }

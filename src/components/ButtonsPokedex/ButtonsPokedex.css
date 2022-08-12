@@ -1,0 +1,42 @@
+.btn-pokedex {
+  position: absolute;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.btn-lateral {
+  top: 78%;
+  width: 8%;
+  height: 5%;
+}
+
+.btn-vertical {
+  left: 68%;
+  width: 6%;
+  height: 7%;
+}
+
+.next-pokemon {
+  left: 74%;
+}
+
+.previous-pokemon {
+  left: 60%;
+}
+
+.next-evolution-pokemon {
+  top: 72%;
+}
+
+.previous-evolution-pokemon {
+  top: 82%;
+}
+
+.add-favorite {
+  top: 71%;
+  left: 10%;
+  width: 11%;
+  height: 7%;
+  clip-path: circle(50% at 50% 50%);
+}
