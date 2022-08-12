@@ -1,0 +1,11 @@
+.container-pokedex {
+  position: relative;
+  width: 35%;
+  min-width: 300px;
+  height: 600px;
+  border-radius: 12px;
+  background-image: url(./../../assets/images/Pokedex.png);
+  background-size: 100% 100%;
+  margin-top: 10px;
+  border: 1px solid black;
+}

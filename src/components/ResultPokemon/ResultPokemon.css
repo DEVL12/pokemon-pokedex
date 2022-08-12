@@ -1,0 +1,38 @@
+.container-result {
+  position: relative;
+  top: 30%;
+  left: 16.5%;
+  width: 59%;
+  height: 177px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.name-pokemon,
+.number-pokemon {
+  position: absolute;
+  font-size: 19px;
+  font-weight: bolder;
+}
+
+.name-pokemon {
+  top: 5%;
+  left: 5%;
+}
+
+.number-pokemon {
+  right: 5%;
+  top: 5%;
+}
+
+.number-pokemon::before {
+  content: '#';
+}
+
+.img-pokemon {
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  height: 120px;
+  width: 120px;
+}
