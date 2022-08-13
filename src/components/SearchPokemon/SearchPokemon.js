@@ -3,29 +3,32 @@ import "./SearchPokemon.css";
 import { PokedexContext } from'./../../context/index.js';
 import { ListAutoComplete, ItemAutoComplete } from "../ListAutoComplete/ListAutoComplete";
 
-
-const SearchPokemon = () => { 
-  const { FindPokemonMatches, setSearchValue } = React.useContext(PokedexContext);
-
-  const Matches = (e) => {
-    const Matchs = FindPokemonMatches(e);
-    setSearchValue(Matchs);
-  }
+const SearchPokemon = () => {
+  const {
+    searchValue,
+    searchPokemon,
+    showMatches,
+    Matches,
+    formOnSubmitPokemon,
+  } = React.useContext(PokedexContext);
 
   return (
-    <form className="form-pokemon" autoComplete="off">
+    <form className="form-pokemon" autoComplete="off" onSubmit={formOnSubmitPokemon}>
       <input
         className="search-pokemon search-success"
         type="text"
         placeholder="Nombre o numero del pokemon"
         onChange={Matches}
+        value={searchPokemon}
       />
-      <button className="search-button" type="button">Buscar</button>
-      <ListAutoComplete > 
-        <ItemAutoComplete />
-        <ItemAutoComplete />
-        <ItemAutoComplete />
-      </ListAutoComplete>
+      <button className="search-button" type="submit">Buscar</button>
+      {showMatches && (
+        <ListAutoComplete>
+          {searchValue.map((pokemon) => (
+            <ItemAutoComplete name={pokemon.name} key={pokemon.name} />
+          ))}
+        </ListAutoComplete>
+      )}
     </form>
   );
 };

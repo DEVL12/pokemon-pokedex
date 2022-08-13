@@ -1,5 +1,6 @@
 import React from "react";
 import './ListAutoComplete.css';
+import { PokedexContext } from "../../context";
 
 const ListAutoComplete = ({children}) => {
   return (
@@ -9,13 +10,16 @@ const ListAutoComplete = ({children}) => {
   );
 };
 
-const ItemAutoComplete = () => {
+const ItemAutoComplete = ({name}) => {
+  const { setSearchPokemon, setShowMatches } = React.useContext(PokedexContext);
+
   const Alertando = () => {
-    alert('Has elejido a: xd');
+    setSearchPokemon(name);
+    setShowMatches(false);
   };
 
   return (
-    <li className="item-autocomplete" onClick={() => Alertando()}>Hola</li>
+    <li className="item-autocomplete" onClick={() => Alertando(name)}>{name}</li>
   );
 }
 
