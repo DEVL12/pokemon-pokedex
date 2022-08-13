@@ -1,20 +1,15 @@
 import React from "react";
 import "./SearchPokemon.css";
-import NamePokemon from './../../helpers/NamePokemon.json';
+import { PokedexContext } from'./../../context/index.js';
 
-const SearchPokemon = () => {
-  const [searchValue, setSearchValue] = React.useState([]);
 
-  const FindPokemonMatches = (e) => {
-    const Matchs = NamePokemon.filter(data => {
-      const valueInput = e.target.value.toLowerCase();
-      const Pokemon = data.name.toLowerCase();
-      return Pokemon.includes(valueInput);
-    });
+const SearchPokemon = () => { 
+  const { FindPokemonMatches, setSearchValue } = React.useContext(PokedexContext);
 
+  const Matches = (e) => {
+    const Matchs = FindPokemonMatches(e);
     setSearchValue(Matchs);
-    console.log(searchValue);
-  };
+  }
 
   return (
     <form className="form-pokemon" autoComplete="off">
@@ -22,7 +17,7 @@ const SearchPokemon = () => {
         className="search-pokemon search-success"
         type="text"
         placeholder="Nombre o numero del pokemon"
-        onChange={FindPokemonMatches}
+        onChange={Matches}
       />
       <button className="search-button" type="button">Buscar</button>
     </form>
