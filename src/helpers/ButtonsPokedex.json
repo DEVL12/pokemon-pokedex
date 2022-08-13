@@ -1,0 +1,8 @@
+[
+  { "class-name-button": "btn-pokedex btn-lateral next-pokemon" },
+  { "class-name-button": "btn-pokedex btn-lateral previous-pokemon" },
+  { "class-name-button": "btn-pokedex btn-vertical next-evolution-pokemon" },
+  { "class-name-button": "btn-pokedex btn-vertical previous-evolution-pokemon" },
+  { "class-name-button": "btn-pokedex add-favorite" },
+  { "class-name-button": "see-favorites" }
+]
