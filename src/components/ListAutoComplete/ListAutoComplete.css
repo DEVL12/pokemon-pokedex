@@ -1,0 +1,54 @@
+.list-container {
+  position: absolute;
+  left: 3.8%;
+  top: 90%;
+  margin: 0%;
+  padding: 0%;
+  width: 267px;
+  max-height: 50vh;
+  list-style: none;
+  background-color: whitesmoke;
+  z-index: 2;
+  border-radius: 4px 4px 12px 12px;
+  overflow: auto;
+}
+
+.list-container::-webkit-scrollbar {
+  background-color: transparent;
+}
+
+.list-container::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 5px;
+}
+
+.item-autocomplete {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  padding: 7px;
+  margin: 0%;
+  cursor: pointer;
+}
+
+.item-autocomplete:last-child {
+  border-radius: 4px 4px 12px 12px;
+}
+
+.item-autocomplete:hover {
+  background-color: lightgrey;
+  transition: all 0.5s;
+}
+
+.item-autocomplete::after {
+  content: '';
+  position: absolute;
+  background-image: url(./../../assets/images/Pokeball-button.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  clip-path: circle(50% at 50% 50%);
+  left: 3%;
+  width: 25px;
+  height: 25px;
+}

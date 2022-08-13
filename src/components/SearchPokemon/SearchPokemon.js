@@ -1,6 +1,7 @@
 import React from "react";
 import "./SearchPokemon.css";
 import { PokedexContext } from'./../../context/index.js';
+import { ListAutoComplete, ItemAutoComplete } from "../ListAutoComplete/ListAutoComplete";
 
 
 const SearchPokemon = () => { 
@@ -20,6 +21,11 @@ const SearchPokemon = () => {
         onChange={Matches}
       />
       <button className="search-button" type="button">Buscar</button>
+      <ListAutoComplete > 
+        <ItemAutoComplete />
+        <ItemAutoComplete />
+        <ItemAutoComplete />
+      </ListAutoComplete>
     </form>
   );
 };
