@@ -40,3 +40,40 @@
   height: 7%;
   clip-path: circle(50% at 50% 50%);
 }
+
+.see-favorites {
+  position: fixed;
+  border: none;
+  bottom: 5%;
+  left: 5%;
+  width: 100px;
+  height: 100px;
+  clip-path: circle(50% at 50% 50%);
+  background-image: url(./../../assets/images/Pokeball-button.png);
+  background-size: cover;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.see-favorites:hover {
+  animation: jump-pokeball 1s;
+}
+
+@keyframes jump-pokeball {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@media (max-width: 621px) {
+  .see-favorites {
+    bottom: -5%;
+    left: -5%;
+  }
+}

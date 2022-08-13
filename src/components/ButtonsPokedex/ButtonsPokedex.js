@@ -13,6 +13,7 @@ const ButtonPokedex = () => {
       <button className="btn-pokedex btn-vertical next-evolution-pokemon" type="button" onClick={() => mensaje('flecha arriba')}></button>
       <button className="btn-pokedex btn-vertical previous-evolution-pokemon" type="button" onClick={() => mensaje('flecha abajo')}></button>
       <button className="btn-pokedex add-favorite" type="button" onClick={() => mensaje('Boton circular')}></button>
+      <button className="see-favorites" type="button" onClick={() => mensaje('Boton favoritos')}></button>
     </>
   );
 };
