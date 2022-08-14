@@ -23,7 +23,7 @@ const PokedexProvider = (props) => {
   const formOnSubmitPokemon = async (e) => {
     e.preventDefault();
     const Pokemon = ( isNaN(parseInt(e.target[0].value)) )
-      ? e.target[0].value
+      ? e.target[0].value.toLowerCase()
       : parseInt(e.target[0].value);
     
     setShowMatches(false);
