@@ -1,5 +1,5 @@
 import React from "react";
-import { FindPokemonMatches } from './functions/SearchPokemon';
+import { FindPokemonMatches, APISeachPokemon } from './functions/SearchPokemon';
 
 const PokedexContext = React.createContext();
 
@@ -7,6 +7,7 @@ const PokedexProvider = (props) => {
   const [searchValue, setSearchValue] = React.useState([]);
   const [searchPokemon, setSearchPokemon] = React.useState('');
   const [showMatches, setShowMatches] = React.useState(false);
+  const [pokedexData, setPokedexData] = React.useState({});
 
   // Guarda todos los match que se encuentran
   const Matches = (e) => {
@@ -19,14 +20,26 @@ const PokedexProvider = (props) => {
       : setShowMatches(true);
   };
 
-  const formOnSubmitPokemon = (e) => {
+  const formOnSubmitPokemon = async (e) => {
     e.preventDefault();
+    const Pokemon = ( isNaN(parseInt(e.target[0].value)) )
+      ? e.target[0].value
+      : parseInt(e.target[0].value);
+    
     setShowMatches(false);
 
-    (e.target[0].value !== "")
-     ? alert(`Dentro de poco buscaremos a ${searchPokemon} ;)`)
-     : alert('No se que quieres que busque... estas bien?');
-  }
+    if (Pokemon === "" || Pokemon <= 0)
+      alert("No se que quieres que busque... estas bien?");
+    
+    const data_pokemon = await APISeachPokemon(Pokemon);
+    
+    if (data_pokemon === false)
+      return false;
+
+      console.log(data_pokemon);
+
+    setPokedexData(data_pokemon);
+  };
   
   return (
     <PokedexContext.Provider value={{
@@ -39,6 +52,8 @@ const PokedexProvider = (props) => {
       setShowMatches,
       Matches,
       formOnSubmitPokemon,
+      pokedexData, 
+      setPokedexData
     }}>
       {props.children}
     </PokedexContext.Provider>

@@ -7,7 +7,7 @@ const ButtonPokedex = ({NameClass}) => {
   }
 
   return (
-    <button className={ NameClass } type="button" onClick={() => mensaje('Funciono')}></button>
+    <button className={ NameClass } type="button" onClick={() => mensaje('Funciono')} />
   );
 };
 

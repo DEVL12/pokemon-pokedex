@@ -1,12 +1,29 @@
 import React from "react";
+import { PokedexContext } from "../../context/index.js";
+import Welcome from './../../assets/images/Welcome.gif';
 import './ResultPokemon.css';
 
+
 const ResultPokemon = () => {
-  return(
+  const {pokedexData} = React.useContext(PokedexContext);
+
+  return (
     <div className="container-result">
-      <span className="name-pokemon">LUCARIO</span>
-      <span className="number-pokemon">448</span>
-      <img className="img-pokemon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/448.png" alt="img"/>
+      {pokedexData?.name && (
+        <span className="name-pokemon"> {pokedexData.name}</span>
+      )}
+      {pokedexData?.id && (
+        <span className="number-pokemon">{pokedexData.id}</span>
+      )}
+      <img
+        className="img-pokemon"
+        src={
+          pokedexData?.sprites?.front_default
+            ? pokedexData?.sprites?.front_default
+            : Welcome
+        }
+        alt="Pokemon"
+      />
     </div>
   );
 };
