@@ -1,13 +1,9 @@
 import React from "react";
 import './ButtonsPokedex.css';
 
-const ButtonPokedex = ({NameClass}) => {
-  const mensaje = (msg) => {
-    alert(msg);
-  }
-
+const ButtonPokedex = ({NameClass, call_back}) => {
   return (
-    <button className={ NameClass } type="button" onClick={() => mensaje('Funciono')} />
+    <button className={ NameClass } type="button" onClick={ call_back } />
   );
 };
 

@@ -20,6 +20,19 @@ const PokedexProvider = (props) => {
       : setShowMatches(true);
   };
 
+  const ResponseApiSearchPokemon = async (Pokemon) => {
+    const data_pokemon = await APISeachPokemon(Pokemon);
+    
+    if (data_pokemon === false)
+      return false;
+
+    setPokedexData({
+      "id": data_pokemon.id, 
+      "name": data_pokemon.name, 
+      "sprites": data_pokemon.sprites
+    });
+  }
+
   const formOnSubmitPokemon = async (e) => {
     e.preventDefault();
     const Pokemon = ( isNaN(parseInt(e.target[0].value)) )
@@ -28,19 +41,30 @@ const PokedexProvider = (props) => {
     
     setShowMatches(false);
 
-    if (Pokemon === "" || Pokemon <= 0)
+    if (Pokemon === "" || Pokemon <= 0) {
       alert("No se que quieres que busque... estas bien?");
+      return 0;
+    }
     
-    const data_pokemon = await APISeachPokemon(Pokemon);
-    
-    if (data_pokemon === false)
-      return false;
-
-      console.log(data_pokemon);
-
-    setPokedexData(data_pokemon);
+    await ResponseApiSearchPokemon(Pokemon);
   };
-  
+
+  const ChangePokemon = async (valor) => {
+    if (pokedexData) {
+      const idPokemon = pokedexData.id + valor;
+
+      if ((idPokemon) === 0) {
+        console.log('No se puede bajar mas');
+        return 0;
+      } else if((idPokemon === 10250)) {
+        console.log('No se puede subir mas');
+        return 0;
+      }
+
+      await ResponseApiSearchPokemon(idPokemon);
+    }
+  }
+
   return (
     <PokedexContext.Provider value={{
       searchValue,
@@ -53,7 +77,8 @@ const PokedexProvider = (props) => {
       Matches,
       formOnSubmitPokemon,
       pokedexData, 
-      setPokedexData
+      setPokedexData,
+      ChangePokemon
     }}>
       {props.children}
     </PokedexContext.Provider>

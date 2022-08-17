@@ -18,7 +18,7 @@ const ResultPokemon = () => {
       <img
         className="img-pokemon"
         src={
-          pokedexData?.sprites?.front_default
+          pokedexData?.sprites
             ? pokedexData?.sprites?.front_default
             : Welcome
         }
