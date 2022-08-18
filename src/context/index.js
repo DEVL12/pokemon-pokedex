@@ -8,6 +8,7 @@ const PokedexProvider = (props) => {
   const [searchPokemon, setSearchPokemon] = React.useState('');
   const [showMatches, setShowMatches] = React.useState(false);
   const [pokedexData, setPokedexData] = React.useState({});
+  const [loading, setLoading] = React.useState(false);
 
   // Guarda todos los match que se encuentran
   const Matches = (e) => {
@@ -21,16 +22,17 @@ const PokedexProvider = (props) => {
   };
 
   const ResponseApiSearchPokemon = async (Pokemon) => {
+    setLoading(true);
     const data_pokemon = await APISeachPokemon(Pokemon);
-    
-    if (data_pokemon === false)
-      return false;
-
-    setPokedexData({
-      "id": data_pokemon.id, 
-      "name": data_pokemon.name, 
-      "sprites": data_pokemon.sprites
-    });
+  
+    data_pokemon === false
+      ? setPokedexData({})
+      : setPokedexData({
+          id: data_pokemon.id,
+          name: data_pokemon.name,
+          sprites: data_pokemon.sprites,
+        });
+    setLoading(false);
   }
 
   const formOnSubmitPokemon = async (e) => {
@@ -78,7 +80,8 @@ const PokedexProvider = (props) => {
       formOnSubmitPokemon,
       pokedexData, 
       setPokedexData,
-      ChangePokemon
+      ChangePokemon,
+      loading
     }}>
       {props.children}
     </PokedexContext.Provider>

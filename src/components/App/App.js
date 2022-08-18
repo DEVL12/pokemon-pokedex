@@ -4,13 +4,15 @@ import { SearchPokemon } from "../SearchPokemon/SearchPokemon";
 import { ResultPokemon } from "../ResultPokemon/ResultPokemon";
 import { ButtonPokedex } from "../ButtonsPokedex/ButtonsPokedex";
 import { PokedexContext } from "../../context";
+import { Loading } from "../Loading/Loading";
 
 
 const App = () => {
-  const {ChangePokemon} = React.useContext(PokedexContext);
+  const {ChangePokemon, loading} = React.useContext(PokedexContext);
   
   return (
     <React.Fragment>
+      {loading && <Loading />}
       <SearchPokemon />
       <BodyPokedex>
         <ResultPokemon />

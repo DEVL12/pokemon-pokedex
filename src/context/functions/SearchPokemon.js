@@ -13,7 +13,7 @@ const APISeachPokemon = async (pokemon) => {
   const response = await fetch(API_URL + pokemon)
 
   if(response.status !== 200 || response.ok !== true) {
-    alert('Error al buscar el pokemon');
+    console.log('Error al buscar el pokemon');
     return false;
   } else {
     const data = await response.json();
