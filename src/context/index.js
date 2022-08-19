@@ -30,7 +30,7 @@ const PokedexProvider = (props) => {
       setError({
         title: `OH NO! Error: ${data_pokemon.response.status} :(`,
         msg: 'Lo lamento pero ha ocurrido un error con su petición, puedes intentar más tarde o realizar una busqueda diferente',
-        show: true
+        show: true,
       });
       setPokedexData({});
     } else {
@@ -61,7 +61,7 @@ const PokedexProvider = (props) => {
   };
 
   const ChangePokemon = async (valor) => {
-    if (pokedexData) {
+    if (pokedexData?.id) {
       const idPokemon = pokedexData.id + valor;
       if ((idPokemon) === 0) {
         console.log('No se puede bajar mas');
@@ -71,6 +71,8 @@ const PokedexProvider = (props) => {
         return 0;
       }
       await ResponseApiSearchPokemon(idPokemon);
+    } else {
+      await ResponseApiSearchPokemon(1);
     }
   }
 

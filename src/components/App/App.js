@@ -6,10 +6,12 @@ import { ButtonPokedex } from "../ButtonsPokedex/ButtonsPokedex";
 import { PokedexContext } from "../../context";
 import { Loading } from "../Loading/Loading";
 import { Alert } from "../Modals/Modals";
-import {BsArrowLeft, BsArrowRight} from 'react-icons/bs'
+import { Buttons } from "../../helpers/ButtonsPokedex";
+
 
 const App = () => {
-  const {ChangePokemon, loading, error} = React.useContext(PokedexContext);
+  const {loading, error} = React.useContext(PokedexContext);
+  const Button = Buttons();
   
   return (
     <React.Fragment>
@@ -17,19 +19,18 @@ const App = () => {
       <SearchPokemon />
       <BodyPokedex>
         <ResultPokemon />
-
-        <ButtonPokedex NameClass="btn-pokedex btn-lateral next-pokemon" call_back={() => ChangePokemon(1)} >
-          <BsArrowRight />
-        </ButtonPokedex>
-
-        <ButtonPokedex NameClass="btn-pokedex btn-lateral previous-pokemon" call_back={() => ChangePokemon(-1)}>
-          <BsArrowLeft />
-        </ButtonPokedex>
-
-        <ButtonPokedex NameClass="btn-pokedex btn-vertical next-evolution-pokemon" />
-        <ButtonPokedex NameClass="btn-pokedex btn-vertical previous-evolution-pokemon" />
-        <ButtonPokedex NameClass="btn-pokedex add-favorite" />
-        <ButtonPokedex NameClass="see-favorites" />
+        {
+          
+          Button.map(({class_name_button, icon, Call_back_button}) => (
+            <ButtonPokedex 
+              key={class_name_button}
+              NameClass={class_name_button} 
+              Call_back={Call_back_button}
+            >
+              {icon}
+            </ButtonPokedex>
+          ))
+        }
         {error.show && <Alert />}
       </BodyPokedex>
     </React.Fragment>
