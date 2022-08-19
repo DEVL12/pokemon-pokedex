@@ -9,6 +9,7 @@ const PokedexProvider = (props) => {
   const [showMatches, setShowMatches] = React.useState(false);
   const [pokedexData, setPokedexData] = React.useState({});
   const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState({ show:false });
 
   // Guarda todos los match que se encuentran
   const Matches = (e) => {
@@ -24,14 +25,22 @@ const PokedexProvider = (props) => {
   const ResponseApiSearchPokemon = async (Pokemon) => {
     setLoading(true);
     const data_pokemon = await APISeachPokemon(Pokemon);
-  
-    data_pokemon === false
-      ? setPokedexData({})
-      : setPokedexData({
-          id: data_pokemon.id,
-          name: data_pokemon.name,
-          sprites: data_pokemon.sprites,
-        });
+
+    if (data_pokemon.response.status !== 200 || data_pokemon.ok === false) {
+      setError({
+        title: `OH NO! Error: ${data_pokemon.response.status} :(`,
+        msg: 'Lo lamento pero ha ocurrido un error con su petición, puedes intentar más tarde o realizar una busqueda diferente',
+        show: true
+      });
+      setPokedexData({});
+    } else {
+      setError({show: false});
+      setPokedexData({
+        id: data_pokemon.data.id,
+        name: data_pokemon.data.name,
+        sprites: data_pokemon.data.sprites,
+      });
+    }
     setLoading(false);
   }
 
@@ -54,7 +63,6 @@ const PokedexProvider = (props) => {
   const ChangePokemon = async (valor) => {
     if (pokedexData) {
       const idPokemon = pokedexData.id + valor;
-
       if ((idPokemon) === 0) {
         console.log('No se puede bajar mas');
         return 0;
@@ -62,7 +70,6 @@ const PokedexProvider = (props) => {
         console.log('No se puede subir mas');
         return 0;
       }
-
       await ResponseApiSearchPokemon(idPokemon);
     }
   }
@@ -81,7 +88,9 @@ const PokedexProvider = (props) => {
       pokedexData, 
       setPokedexData,
       ChangePokemon,
-      loading
+      loading,
+      error,
+      setError,
     }}>
       {props.children}
     </PokedexContext.Provider>

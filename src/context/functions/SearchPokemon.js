@@ -10,14 +10,13 @@ const FindPokemonMatches = (value) => {
 };
 
 const APISeachPokemon = async (pokemon) => {
-  const response = await fetch(API_URL + pokemon)
-
-  if(response.status !== 200 || response.ok !== true) {
-    console.log('Error al buscar el pokemon');
-    return false;
-  } else {
+  try {
+    var response = await fetch(API_URL + pokemon)
     const data = await response.json();
-    return data;
+    return {response, data};
+  } catch (error) {
+    console.error('Error: ', error);
+    return {response};
   }
 };
 

@@ -5,10 +5,10 @@ import { ResultPokemon } from "../ResultPokemon/ResultPokemon";
 import { ButtonPokedex } from "../ButtonsPokedex/ButtonsPokedex";
 import { PokedexContext } from "../../context";
 import { Loading } from "../Loading/Loading";
-
+import { Alert } from "../Modals/Modals";
 
 const App = () => {
-  const {ChangePokemon, loading} = React.useContext(PokedexContext);
+  const {ChangePokemon, loading, error} = React.useContext(PokedexContext);
   
   return (
     <React.Fragment>
@@ -28,6 +28,7 @@ const App = () => {
         <ButtonPokedex NameClass="btn-pokedex btn-vertical previous-evolution-pokemon" />
         <ButtonPokedex NameClass="btn-pokedex add-favorite" />
         <ButtonPokedex NameClass="see-favorites" />
+        {error.show && <Alert />}
       </BodyPokedex>
     </React.Fragment>
   );

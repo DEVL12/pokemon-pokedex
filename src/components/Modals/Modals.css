@@ -1,0 +1,39 @@
+.alert-modal {
+  position: fixed;
+  right: 2%;
+  bottom: 2%;
+  width: 250px;
+  border: 2px solid white;
+  border-radius: 12px;
+  padding: 10px;
+  background-color: crimson;
+  animation: Modal-animation 0.5s linear;
+  cursor: pointer;
+}
+
+.alert-modal > h4,
+.alert-modal > p {
+  text-align: center;
+  color: white;
+}
+
+.alert-modal > p {
+  padding: 10px;
+}
+
+@keyframes Modal-animation {
+  0% {
+    opacity: 0.1;
+    transform: translateX(100%);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: translateX(50%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
