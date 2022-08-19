@@ -6,6 +6,7 @@ import { ButtonPokedex } from "../ButtonsPokedex/ButtonsPokedex";
 import { PokedexContext } from "../../context";
 import { Loading } from "../Loading/Loading";
 import { Alert } from "../Modals/Modals";
+import {BsArrowLeft, BsArrowRight} from 'react-icons/bs'
 
 const App = () => {
   const {ChangePokemon, loading, error} = React.useContext(PokedexContext);
@@ -16,14 +17,15 @@ const App = () => {
       <SearchPokemon />
       <BodyPokedex>
         <ResultPokemon />
-        <ButtonPokedex
-          NameClass="btn-pokedex btn-lateral next-pokemon"
-          call_back={() => ChangePokemon(1)}
-        />
-        <ButtonPokedex
-          NameClass="btn-pokedex btn-lateral previous-pokemon"
-          call_back={() => ChangePokemon(-1)}
-        />
+
+        <ButtonPokedex NameClass="btn-pokedex btn-lateral next-pokemon" call_back={() => ChangePokemon(1)} >
+          <BsArrowRight />
+        </ButtonPokedex>
+
+        <ButtonPokedex NameClass="btn-pokedex btn-lateral previous-pokemon" call_back={() => ChangePokemon(-1)}>
+          <BsArrowLeft />
+        </ButtonPokedex>
+
         <ButtonPokedex NameClass="btn-pokedex btn-vertical next-evolution-pokemon" />
         <ButtonPokedex NameClass="btn-pokedex btn-vertical previous-evolution-pokemon" />
         <ButtonPokedex NameClass="btn-pokedex add-favorite" />

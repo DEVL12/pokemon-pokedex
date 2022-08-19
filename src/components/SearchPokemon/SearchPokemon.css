@@ -23,17 +23,19 @@
 }
 
 .search-error {
-  border-color: crimson;
+  border: 1px solid crimson;
   color: crimson;
 }
 
 .search-button {
+  display: flex;
   border: none;
   border-radius: 5px;
   background-color: crimson;
   border: 1px solid crimson;
   color: white;
   padding: 5px;
+  font-size: 25px;
   cursor: pointer;
   transition: all 0.5s;
 }

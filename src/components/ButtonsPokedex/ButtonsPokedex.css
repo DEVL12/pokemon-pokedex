@@ -1,12 +1,18 @@
 .btn-pokedex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  color: gray;
   position: absolute;
   border: none;
   cursor: pointer;
   background-color: transparent;
+  font-weight: bold;
 }
 
 .btn-lateral {
-  top: 78%;
+  top: 78.2%;
   width: 8%;
   height: 5%;
 }
