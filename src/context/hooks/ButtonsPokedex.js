@@ -7,7 +7,7 @@ import {
 import { AiFillHeart } from "react-icons/ai";
 
 const Buttons = (context) => {
-  const { ChangePokemon } = context;
+  const { ChangePokemon, setShowFavorites } = context;
   return [
     {
       class_name_button: "btn-pokedex btn-lateral next-pokemon",
@@ -37,7 +37,7 @@ const Buttons = (context) => {
     {
       class_name_button: "see-favorites",
       icon: <></>,
-      Call_back_button: () => alert("Boton para ver favorito"),
+      Call_back_button: () => setShowFavorites(true),
     },
   ];
 };

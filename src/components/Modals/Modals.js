@@ -1,15 +1,18 @@
-import React from "react";
-import { PokedexContext } from "../../context";
-import './Modals.css';
+import React, { useContext } from "react";
+import { Loading } from "./Loading/Loading";
+import { Alert } from "./Alert/Alert";
+import { Favorites } from "./Favorites/Favorites";
+import { PokedexContext } from "../../context/index";
 
-const Alert = () => {
-  const {error, setError} = React.useContext(PokedexContext);
+const Modals = () => {
+  const { loading, error, showFavorites } = useContext(PokedexContext);
   return (
-    <div className="alert-modal" onClick={() => setError({ show: false})}> 
-      <h4>{error.title}</h4>
-      <p>{error.msg}</p>
-    </div>
+    <>
+      {loading && <Loading />}
+      {error.show && <Alert />}
+      {showFavorites && <Favorites />}
+    </>
   );
-}
+};
 
-export { Alert };
+export { Modals };

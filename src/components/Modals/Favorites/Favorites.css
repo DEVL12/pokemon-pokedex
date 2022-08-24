@@ -1,0 +1,36 @@
+
+.container-favorites {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(32, 35, 41, .8);
+  z-index: 999;
+}
+
+.content-favorites {
+  width: 70%;
+  min-height: 50%;
+  background-color: white;
+  border-radius: 5px;
+  animation: Show_Favorites .5s linear;
+}
+
+@keyframes Show_Favorites {
+  0% {
+    opacity: 0.1;
+    transform: translateY(-100%);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: translateY(-50%)
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}

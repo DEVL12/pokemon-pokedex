@@ -15,6 +15,7 @@ const PokedexProvider = ({ children }) => {
   const [pokedexData, setPokedexData] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({ show: false });
+  const [showFavorites, setShowFavorites] = useState(false);
 
   // Guarda todos los match que se encuentran
   const Matches = (e) => {
@@ -64,6 +65,8 @@ const PokedexProvider = ({ children }) => {
         error,
         setError,
         Buttons,
+        showFavorites, 
+        setShowFavorites
       }}
     >
       {children}
