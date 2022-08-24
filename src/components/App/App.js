@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import { BodyPokedex } from "../BodyPokedex/BodyPokedex";
 import { SearchPokemon } from "../SearchPokemon/SearchPokemon";
 import { ResultPokemon } from "../ResultPokemon/ResultPokemon";
@@ -6,12 +6,10 @@ import { ButtonPokedex } from "../ButtonsPokedex/ButtonsPokedex";
 import { PokedexContext } from "../../context";
 import { Loading } from "../Loading/Loading";
 import { Alert } from "../Modals/Modals";
-import { Buttons } from "../../helpers/ButtonsPokedex";
-
 
 const App = () => {
-  const {loading, error} = React.useContext(PokedexContext);
-  const Button = Buttons();
+  const {loading, error, Buttons} = useContext(PokedexContext);
+  const Button = Buttons(useContext(PokedexContext));
   
   return (
     <React.Fragment>
@@ -19,8 +17,7 @@ const App = () => {
       <SearchPokemon />
       <BodyPokedex>
         <ResultPokemon />
-        {
-          
+        { 
           Button.map(({class_name_button, icon, Call_back_button}) => (
             <ButtonPokedex 
               key={class_name_button}
