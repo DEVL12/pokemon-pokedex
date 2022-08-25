@@ -5,10 +5,11 @@ import {
   BsArrowDown,
 } from "react-icons/bs";
 import { AiFillHeart } from "react-icons/ai";
+import { CgClose } from "react-icons/cg";
 
-const Buttons = (context) => {
+const Buttons = (context, btn) => {
   const { ChangePokemon, setShowFavorites } = context;
-  return [
+  const all_bnts = [
     {
       class_name_button: "btn-pokedex btn-lateral next-pokemon",
       icon: <BsArrowRight />,
@@ -36,10 +37,17 @@ const Buttons = (context) => {
     },
     {
       class_name_button: "see-favorites",
-      icon: <></>,
+      icon: "",
       Call_back_button: () => setShowFavorites(true),
     },
+    {
+      class_name_button: "close-favorite",
+      icon: <CgClose />,
+      Call_back_button: () => setShowFavorites(false),
+    },
   ];
+
+  return btn.map((num) => all_bnts[num]);
 };
 
 export { Buttons };

@@ -1,11 +1,7 @@
 import React, { useContext } from "react";
 import { Loading } from "./Loading/Loading";
 import { Alert } from "./Alert/Alert";
-import {
-  Favorites,
-  ListFavoritesPokemons,
-  ItemFavoritesPokemons,
-} from "./Favorites/Favorites";
+import { Favorites } from "./Favorites/Favorites";
 import { PokedexContext } from "../../context/index";
 
 const Modals = () => {
@@ -14,7 +10,7 @@ const Modals = () => {
     <>
       {loading && <Loading />}
       {error.show && <Alert />}
-      {showFavorites && <Favorites items={[{btn:1},{btn:2},{btn:3},{btn:4}]} /> }
+      {showFavorites && <Favorites Pokemon={[{ btn: 1 }, { btn: 2 }, { btn: 3 }, { btn: 4 }]} />}
     </>
   );
 };

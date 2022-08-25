@@ -1,22 +1,18 @@
 import React, { useContext } from "react";
 import { ButtonPokedex } from "../../ButtonsPokedex/ButtonsPokedex";
 import { PokedexContext } from "./../../../context/index";
-import { CgClose } from "react-icons/cg";
 import "./Favorites.css";
 
-const Favorites = ({ items }) => {
-  const { showFavorites, setShowFavorites } = useContext(PokedexContext);
+const Favorites = ({ Pokemon }) => {
+  const { Buttons } = useContext(PokedexContext);
+  const Button = Buttons(useContext(PokedexContext), [6]);
+
   return (
     <div className="container-favorites">
       <div className="content-favorites">
-        <ButtonPokedex
-          NameClass="close-favorite"
-          Call_back={() => setShowFavorites(!showFavorites)}
-        >
-          <CgClose />
-        </ButtonPokedex>
+        <ButtonPokedex buttons={Button} />
         <ListFavoritesPokemons>
-          <ItemFavoritesPokemons items={items} />
+          <ItemFavoritesPokemons items={Pokemon} />
         </ListFavoritesPokemons>
       </div>
     </div>

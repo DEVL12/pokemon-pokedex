@@ -1,24 +1,16 @@
 import React from "react";
 import "./ButtonsPokedex.css";
 
-const ButtonPokedex = ({ NameClass, Call_back, children }) => {
-  return (
-    <button className={NameClass} type="button" onClick={Call_back}>
-      {children}
-    </button>
-  );
-};
-
-const GroupOfButtons = ({ buttons }) => {
+const ButtonPokedex = ({ buttons }) => {
   return buttons.map(({ class_name_button, icon, Call_back_button }) => (
-    <ButtonPokedex
+    <button
       key={class_name_button}
-      NameClass={class_name_button}
-      Call_back={Call_back_button}
+      className={class_name_button}
+      onClick={Call_back_button}
     >
       {icon}
-    </ButtonPokedex>
+    </button>
   ));
 };
 
-export { ButtonPokedex, GroupOfButtons };
+export { ButtonPokedex };
