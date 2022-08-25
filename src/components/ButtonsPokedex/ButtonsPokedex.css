@@ -83,3 +83,20 @@
     left: -5%;
   }
 }
+
+.close-favorite {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  color: white;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: crimson;
+  border: none;
+  cursor: pointer;
+}
