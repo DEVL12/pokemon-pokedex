@@ -10,17 +10,17 @@ const ListAutoComplete = ({children}) => {
   );
 };
 
-const ItemAutoComplete = ({name}) => {
+const ItemAutoComplete = ({pokemons}) => {
   const { setSearchPokemon, setShowMatches } = React.useContext(PokedexContext);
 
-  const Alertando = () => {
+  const Alertando = (name) => {
     setSearchPokemon(name);
     setShowMatches(false);
   };
 
-  return (
-    <li className="item-autocomplete" onClick={() => Alertando(name)}>{name}</li>
-  );
+  return pokemons.map(({name}) =>(
+    <li className="item-autocomplete" key={name} onClick={() => Alertando(name)}>{name}</li>
+  ));
 }
 
 export { ListAutoComplete, ItemAutoComplete };

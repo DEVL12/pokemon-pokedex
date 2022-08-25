@@ -4,7 +4,7 @@ import {
   BsArrowUp,
   BsArrowDown,
 } from "react-icons/bs";
-import { AiFillHeart } from "react-icons/ai";
+import { AiFillHeart, AiOutlineSearch } from "react-icons/ai";
 import { CgClose } from "react-icons/cg";
 
 const Buttons = (context, btn) => {
@@ -44,6 +44,11 @@ const Buttons = (context, btn) => {
       class_name_button: "close-favorite",
       icon: <CgClose />,
       Call_back_button: () => setShowFavorites(false),
+    },
+    {
+      class_name_button: "search-button",
+      icon: <AiOutlineSearch/>,
+      Call_back_button: () => onsubmit,
     },
   ];
 
