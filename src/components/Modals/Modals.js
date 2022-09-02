@@ -10,7 +10,7 @@ const Modals = () => {
     <>
       {loading && <Loading />}
       {error.show && <Alert />}
-      {showFavorites && <Favorites Pokemon={[{ btn: 1 }, { btn: 2 }, { btn: 3 }, { btn: 4 }]} />}
+      {showFavorites && <Favorites />}
     </>
   );
 };

@@ -36,7 +36,8 @@
 }
 
 .title-favorite {
-  margin-top: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
@@ -44,6 +45,59 @@
   display: flex;
   flex-flow: nowrap column;
   align-items: center;
-  justify-content: center;
   list-style: none;
+  max-height: 80vh;
+  overflow: auto;
+}
+
+.pokemon-favorite {
+  position: relative;
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: center;
+  align-items: center;
+  background-color: #eee;
+  width: 80%;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 3px gray;
+}
+
+.pokemon-favorite::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -20px;
+  transform: translate(-0%, -50%);
+  background-image: url(./../../../assets/images/Pokeball-button.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+}
+
+div.information-pokemon-favorite {
+  display: flex;
+  flex-flow: nowrap row;
+  align-items: center;
+  padding: 5px;
+}
+
+.img-pokemon-favorite {
+  width: 70px;
+  height: 70px;
+}
+
+div.information-pokemon-favorite  p {
+  margin: 5px;
+  font-weight: 500;
+}
+
+.buttons-pokemon-favorite {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
 }

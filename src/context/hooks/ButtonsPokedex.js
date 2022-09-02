@@ -4,8 +4,9 @@ import {
   BsArrowUp,
   BsArrowDown,
 } from "react-icons/bs";
-import { AiFillHeart, AiOutlineSearch } from "react-icons/ai";
+import { AiFillHeart, AiOutlineSearch, AiOutlineDelete } from "react-icons/ai";
 import { CgClose } from "react-icons/cg";
+import { BsCardChecklist } from "react-icons/bs";
 
 const Buttons = (context, btn) => {
   const { ChangePokemon, setShowFavorites } = context;
@@ -47,8 +48,18 @@ const Buttons = (context, btn) => {
     },
     {
       class_name_button: "search-button",
-      icon: <AiOutlineSearch/>,
+      icon: <AiOutlineSearch />,
       Call_back_button: () => onsubmit,
+    },
+    {
+      class_name_button: "button-favorite information-pokemon",
+      icon: <BsCardChecklist />,
+      Call_back_button: () => alert("information-favorite"),
+    },
+    {
+      class_name_button: "button-favorite remove-pokemon",
+      icon: <AiOutlineDelete />,
+      Call_back_button: () => alert("remove-favorite"),
     },
   ];
 
