@@ -9,7 +9,7 @@ import { CgClose } from "react-icons/cg";
 import { BsCardChecklist } from "react-icons/bs";
 
 const Buttons = (context, btn) => {
-  const { ChangePokemon, setShowFavorites } = context;
+  const { ChangePokemon, setShowFavorites, AddFavoritesPokemonLocalStorage, pokedexData } = context;
   const all_bnts = [
     {
       class_name_button: "btn-pokedex btn-lateral next-pokemon",
@@ -34,7 +34,7 @@ const Buttons = (context, btn) => {
     {
       class_name_button: "btn-pokedex add-favorite",
       icon: <AiFillHeart />,
-      Call_back_button: () => alert("Boton para favorito"),
+      Call_back_button: () => AddFavoritesPokemonLocalStorage(pokedexData),
     },
     {
       class_name_button: "see-favorites",
