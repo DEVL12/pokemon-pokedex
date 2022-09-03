@@ -43,10 +43,10 @@ const ResponseApiSearchPokemon = async (obj_data) => {
   setLoading(false);
 };
 
-const ChangePokemon = async (obj_data) => {
-  const value = obj_data.value;
-  const { setLoading, setError, setPokedexData, pokedexData } = obj_data.context;
-  const data = { Pokemon: 1, setLoading, setError, setPokedexData };
+const ChangePokemon = async (next, context) => {
+  const value = next;
+  const { setLoading, setError, setPokedexData, pokedexData } = context;
+  let data = { Pokemon: 1, setLoading, setError, setPokedexData };
 
   if (pokedexData?.id) {
     data.Pokemon = pokedexData.id + value;
@@ -57,10 +57,9 @@ const ChangePokemon = async (obj_data) => {
       console.log("No se puede subir mas");
       return 0;
     }
-    await ResponseApiSearchPokemon(data);
-  } else {
-    await ResponseApiSearchPokemon(data);
   }
+
+  await ResponseApiSearchPokemon(data);
 };
 
 export {

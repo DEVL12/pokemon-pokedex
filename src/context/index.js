@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Buttons } from "./hooks/ButtonsPokedex";
 import { AddFavoritesPokemonLocalStorage } from "./hooks/FavoritePokemon";
 import {
   FindPokemonMatches,
@@ -65,7 +64,6 @@ const PokedexProvider = ({ children }) => {
         setLoading,
         error,
         setError,
-        Buttons,
         showFavorites, 
         setShowFavorites,
         AddFavoritesPokemonLocalStorage,
