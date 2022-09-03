@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-const AddFavoritesPokemonLocalStorage = (Pokemon) => {
-  // const [favorites, set_favorites] = useState({});
+const AddFavoritePokemonLocalStorage = (setFavoritePokemon, Pokemon) => {
   if (Object.values(Pokemon).length === 0) return 0;
 
   const AddToLocalStorage = ({ id, name, sprites }) => {
@@ -12,21 +11,43 @@ const AddFavoritesPokemonLocalStorage = (Pokemon) => {
           { id: id, name: name, sprite: sprites.front_default },
         ];
 
-    localStorage.setItem("Favorites_pokemons", JSON.stringify(data));
+    SaveChanges(setFavoritePokemon, data);
   };
-
-  const ExistInTheList = (Pokemon) => {
-    const List_Pokemons = JSON.parse(GetListOfPokemons());
-    return List_Pokemons.some(({ id }) => id === Pokemon.id);
-  };
-
-  const IsListEmpty = () => (!GetListOfPokemons() ? true : false);
-
-  const GetListOfPokemons = () => localStorage.getItem("Favorites_pokemons");
 
   IsListEmpty()
     ? AddToLocalStorage(Pokemon)
-    : !ExistInTheList(Pokemon) && AddToLocalStorage(Pokemon);
+    : !ExistInTheList(Pokemon.id) && AddToLocalStorage(Pokemon);
 };
 
-export { AddFavoritesPokemonLocalStorage };
+const DeleteFavoritePokemonLocalStorage = (setFavoritePokemon, id) => {
+  if (!ExistInTheList(id)) return 0;
+
+  let NewListPokemon = JSON.parse(GetListOfPokemons());
+  const index = NewListPokemon.findIndex((Pokemon) => Pokemon.id === id);
+  NewListPokemon.splice(index, 1);
+
+  SaveChanges(setFavoritePokemon, NewListPokemon);
+};
+
+const SaveChanges = (setFavoritePokemon, data) => {
+  localStorage.setItem("Favorites_pokemons", JSON.stringify(data));
+  setFavoritePokemon(data);
+};
+
+const ExistInTheList = (id) => {
+  const List_Pokemons = JSON.parse(GetListOfPokemons());
+  return List_Pokemons.some((Pokemon) => Pokemon.id === id);
+};
+
+const InitialValue = () =>
+  IsListEmpty() ? [] : JSON.parse(GetListOfPokemons());
+
+const GetListOfPokemons = () => localStorage.getItem("Favorites_pokemons");
+
+const IsListEmpty = () => (!GetListOfPokemons() ? true : false);
+
+export {
+  AddFavoritePokemonLocalStorage,
+  DeleteFavoritePokemonLocalStorage,
+  InitialValue,
+};

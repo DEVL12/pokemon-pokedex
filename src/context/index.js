@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import { AddFavoritesPokemonLocalStorage } from "./hooks/FavoritePokemon";
+import {
+  AddFavoritePokemonLocalStorage,
+  DeleteFavoritePokemonLocalStorage,
+  InitialValue,
+} from "./hooks/FavoritePokemon";
 import {
   FindPokemonMatches,
   ResponseApiSearchPokemon,
@@ -16,6 +20,7 @@ const PokedexProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({ show: false });
   const [showFavorites, setShowFavorites] = useState(false);
+  const [favoritePokemon, setFavoritePokemon] = useState(InitialValue());
 
   // Guarda todos los match que se encuentran
   const Matches = (e) => {
@@ -64,9 +69,12 @@ const PokedexProvider = ({ children }) => {
         setLoading,
         error,
         setError,
-        showFavorites, 
+        showFavorites,
         setShowFavorites,
-        AddFavoritesPokemonLocalStorage,
+        AddFavoritePokemonLocalStorage,
+        DeleteFavoritePokemonLocalStorage,
+        favoritePokemon,
+        setFavoritePokemon,
       }}
     >
       {children}

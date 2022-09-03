@@ -79,10 +79,13 @@
 }
 
 div.information-pokemon-favorite {
+  width: 300px;
   display: flex;
   flex-flow: nowrap row;
+  justify-content: center;
   align-items: center;
   padding: 5px;
+  overflow: hidden;
 }
 
 .img-pokemon-favorite {

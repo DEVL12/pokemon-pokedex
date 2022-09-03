@@ -17,9 +17,10 @@ const App = () => {
   const Context = useContext(PokedexContext);
   const {
     ChangePokemon,
-    AddFavoritesPokemonLocalStorage,
+    AddFavoritePokemonLocalStorage,
     setShowFavorites,
     pokedexData,
+    setFavoritePokemon,
   } = Context;
 
   return (
@@ -53,7 +54,7 @@ const App = () => {
             {
               class_name_button: "btn-pokedex add-favorite",
               icon: <AiFillHeart />,
-              Call_back_button: () => AddFavoritesPokemonLocalStorage(pokedexData),
+              Call_back_button: () => AddFavoritePokemonLocalStorage(setFavoritePokemon, pokedexData),
             },
             {
               class_name_button: "see-favorites",

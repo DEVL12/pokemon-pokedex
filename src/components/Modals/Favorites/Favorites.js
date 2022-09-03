@@ -6,8 +6,8 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { CgClose } from "react-icons/cg";
 import "./Favorites.css";
 
-const Favorites = ({ Pokemones }) => {
-  const { setShowFavorites } = useContext(PokedexContext);
+const Favorites = () => {
+  const { setShowFavorites } = useContext(PokedexContext);;
 
   return (
     <div className="container-favorites">
@@ -26,48 +26,54 @@ const Favorites = ({ Pokemones }) => {
 };
 
 const ListFavoritesPokemons = () => {
-  const Pokemon = [{ btn: 1 }, { btn: 2 }];
+  const { favoritePokemon } = useContext(PokedexContext);
 
   return (
     <>
       <h4 className="title-favorite">Pokemones favoritos</h4>
       <ul className="list-container-favorites">
-        <ItemFavoritesPokemons Pokemones={Pokemon} />
+        <ItemFavoritesPokemons Pokemones={favoritePokemon} />
       </ul>
     </>
   );
 };
 
 const ItemFavoritesPokemons = ({ Pokemones }) => {
-  return Pokemones.map((Pokemon) => (
-    <li key={Pokemon.btn} className="pokemon-favorite">
-      <div className="information-pokemon-favorite">
-        <p>100000</p>
-        <p>charizard-mega-x</p>
-        <img
-          className="img-pokemon-favorite"
-          src="	https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10196.png"
-          alt="img-pokemon"
-        />
-      </div>
-      <div className="buttons-pokemon-favorite">
-        <ButtonPokedex
-          buttons={[
-            {
-              class_name_button: "button-favorite information-pokemon",
-              icon: <BsCardChecklist />,
-              Call_back_button: () => alert(Pokemon.btn),
-            },
-            {
-              class_name_button: "button-favorite remove-pokemon",
-              icon: <AiOutlineDelete />,
-              Call_back_button: () => alert(Pokemon.btn),
-            },
-          ]}
-        />
-      </div>
-    </li>
-  ));
+  const { DeleteFavoritePokemonLocalStorage, setFavoritePokemon} = useContext(PokedexContext);
+  
+  return (Pokemones.length === 0)
+  ? <h1>Vacio</h1>
+  : (
+    Pokemones.map(({id, name , sprite}) => (
+      <li key={id} className="pokemon-favorite">
+        <div className="information-pokemon-favorite">
+          <p>{id}</p>
+          <p>{name}</p>
+          <img
+            className="img-pokemon-favorite"
+            src={sprite}
+            alt="img-pokemon"
+          />
+        </div>
+        <div className="buttons-pokemon-favorite">
+          <ButtonPokedex
+            buttons={[
+              {
+                class_name_button: "button-favorite information-pokemon",
+                icon: <BsCardChecklist />,
+                Call_back_button: () => alert('Pronto funcionará uwu'),
+              },
+              {
+                class_name_button: "button-favorite remove-pokemon",
+                icon: <AiOutlineDelete />,
+                Call_back_button: () => DeleteFavoritePokemonLocalStorage(setFavoritePokemon, id),
+              },
+            ]}
+          />
+        </div>
+      </li>
+    ))
+  );
 };
 
 export { Favorites };

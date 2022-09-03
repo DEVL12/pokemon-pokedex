@@ -20,8 +20,8 @@ const APISeachPokemon = async (pokemon) => {
   }
 };
 
-const ResponseApiSearchPokemon = async (obj_data) => {
-  const { Pokemon, setLoading, setError, setPokedexData } = obj_data;
+const ResponseApiSearchPokemon = async (context) => {
+  const { Pokemon, setLoading, setError, setPokedexData } = context;
   setLoading(true);
   const data_pokemon = await APISeachPokemon(Pokemon);
 
