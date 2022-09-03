@@ -7,9 +7,16 @@
   border: 2px solid white;
   border-radius: 12px;
   padding: 10px;
-  background-color: crimson;
   animation: Modal-animation 0.5s linear;
   cursor: pointer;
+}
+
+.alert-error {
+  background-color: crimson;
+}
+
+.alert-favorite {
+  background-color: green;
 }
 
 .alert-modal > h4,

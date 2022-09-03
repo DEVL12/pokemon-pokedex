@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
-import { PokedexContext } from "./../../../context/index";
+import React from "react";
 import './Alert.css';
 
-const Alert = () => {
-  const { error, setError } = useContext(PokedexContext);
+const Alert = ({dataAlert}) => {
+  const {data, state_data, class_alert} = dataAlert;
+  
   return (
-    <div className="alert-modal" onClick={() => setError({ show: false })}>
-      <h4>{error.title}</h4>
-      <p>{error.msg}</p>
+    <div className={`alert-modal ${class_alert}`} onClick={() => state_data({ show: false })}>
+      <h4>{data.title}</h4>
+      <p>{data.msg}</p>
     </div>
   );
 };

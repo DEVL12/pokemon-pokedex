@@ -1,6 +1,8 @@
-import React, { useState } from "react";
-
-const AddFavoritePokemonLocalStorage = (setFavoritePokemon, Pokemon) => {
+const AddFavoritePokemonLocalStorage = (
+  setFavoritePokemon,
+  setAlertFavorite,
+  Pokemon
+) => {
   if (Object.values(Pokemon).length === 0) return 0;
 
   const AddToLocalStorage = ({ id, name, sprites }) => {
@@ -12,11 +14,23 @@ const AddFavoritePokemonLocalStorage = (setFavoritePokemon, Pokemon) => {
         ];
 
     SaveChanges(setFavoritePokemon, data);
+
+    setAlertFavorite({
+      title: "Pokemon añadido",
+      msg: `${name.toUpperCase()} fue añadido correctamente a su lista de favoritos`,
+      show: true,
+    });
   };
 
   IsListEmpty()
     ? AddToLocalStorage(Pokemon)
-    : !ExistInTheList(Pokemon.id) && AddToLocalStorage(Pokemon);
+    : !ExistInTheList(Pokemon.id)
+        ? AddToLocalStorage(Pokemon)
+        : setAlertFavorite({
+            title: 'Pokemon ya existente',
+            msg: `${Pokemon.name.toUpperCase()} ya se encuentra registrado dentro de su lista de favoritos`,
+            show: true,
+          });
 };
 
 const DeleteFavoritePokemonLocalStorage = (setFavoritePokemon, id) => {

@@ -19,6 +19,7 @@ const PokedexProvider = ({ children }) => {
   const [pokedexData, setPokedexData] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({ show: false });
+  const [alertFavorite, setAlertFavorite] = useState({ show: false });
   const [showFavorites, setShowFavorites] = useState(false);
   const [favoritePokemon, setFavoritePokemon] = useState(InitialValue());
 
@@ -69,6 +70,8 @@ const PokedexProvider = ({ children }) => {
         setLoading,
         error,
         setError,
+        alertFavorite, 
+        setAlertFavorite,
         showFavorites,
         setShowFavorites,
         AddFavoritePokemonLocalStorage,
